@@ -1,0 +1,77 @@
+{
+  "name": "pegboard",
+  "displayName": "Pegboard",
+  "description": "Your repo's commands and agent prompts, on the wall. Copy, don't run. Reads docs/pegboard.md from the open repo.",
+  "version": "0.1.0",
+  "publisher": "weipinglu",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/weipinglu/pegboard.git" },
+  "homepage": "https://github.com/weipinglu/pegboard#readme",
+  "bugs": { "url": "https://github.com/weipinglu/pegboard/issues" },
+  "keywords": ["commands", "prompts", "agent", "snippets", "cheatsheet", "copy", "markdown"],
+  "engines": { "vscode": "^1.90.0" },
+  "categories": ["Other"],
+  "main": "./out/extension.js",
+  "activationEvents": ["workspaceContains:**/pegboard.md"],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        { "id": "pegboard", "title": "Pegboard", "icon": "resources/pegboard.svg" }
+      ]
+    },
+    "views": {
+      "pegboard": [
+        { "id": "pegboard.entries", "name": "Pegboard" }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "pegboard.entries",
+        "contents": "No pegboard file found.\nCreate `docs/pegboard.md` in this repo and its entries will appear here. The starter file shows the format.\n[Create docs/pegboard.md](command:pegboard.openFile)\n[Open README](command:pegboard.readme)"
+      }
+    ],
+    "commands": [
+      { "command": "pegboard.open", "title": "Pegboard: Open" },
+      { "command": "pegboard.refresh", "title": "Pegboard: Refresh", "icon": "$(refresh)" },
+      { "command": "pegboard.openFile", "title": "Pegboard: Edit pegboard.md", "icon": "$(edit)" },
+      { "command": "pegboard.addEntry", "title": "Pegboard: Add entry", "icon": "$(add)" },
+      { "command": "pegboard.copy", "title": "Pegboard: Copy", "icon": "$(copy)" },
+      { "command": "pegboard.readme", "title": "Pegboard: README" }
+    ],
+    "menus": {
+      "view/title": [
+        { "command": "pegboard.addEntry", "when": "view == pegboard.entries", "group": "navigation@1" },
+        { "command": "pegboard.openFile", "when": "view == pegboard.entries", "group": "navigation@2" },
+        { "command": "pegboard.refresh", "when": "view == pegboard.entries", "group": "navigation@3" }
+      ],
+      "view/item/context": [
+        { "command": "pegboard.copy", "when": "view == pegboard.entries && viewItem == entry", "group": "inline" }
+      ]
+    },
+    "configuration": {
+      "title": "Pegboard",
+      "properties": {
+        "pegboard.file": {
+          "type": "string",
+          "default": "docs/pegboard.md",
+          "description": "Pegboard file, relative to a workspace folder."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "test": "npm run compile && node --test out/test/*.test.js",
+    "package": "npm run compile && npx @vscode/vsce package --out pegboard.vsix",
+    "install-local": "npm run package && code --install-extension pegboard.vsix --force",
+    "publish:marketplace": "npm run compile && npx @vscode/vsce publish",
+    "publish:openvsx": "npm run compile && npx ovsx publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.1.0",
+    "typescript": "^5.4.0"
+  }
+}

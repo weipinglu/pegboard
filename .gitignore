@@ -1,0 +1,8 @@
+node_modules/
+out/
+*.vsix
+.DS_Store
+
+# docs is a symlink into the private notes repo (../project-notes/pegboard/docs).
+# Plans, worklogs, designs and decisions live there; never commit it here.
+docs
