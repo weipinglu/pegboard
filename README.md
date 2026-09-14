@@ -2,6 +2,10 @@
 
 **Your repo's commands and agent prompts, on the wall. Copy, don't run.**
 
+> **Status: under development.** Not yet published to the VS Code Marketplace or
+> Open VSX. The extension works today when installed from source (see
+> [Developing](#developing)); the file format may still change before 0.1.0.
+
 Pegboard is a VS Code / Cursor extension that reads one markdown file in the
 open repo, `docs/pegboard.md`, and shows its entries in a sidebar and a page.
 Each entry is a terminal command or an agent prompt with fillable `{slots}` and
@@ -54,7 +58,8 @@ the extension.
 
 ## Getting started
 
-1. Install Pegboard from the VS Code Marketplace or Open VSX.
+1. Install Pegboard. Until it is published, that means from source:
+   `npm install && ./install.sh` in a clone of this repo.
 2. Click the Pegboard icon in the activity bar.
 3. Press **Create docs/pegboard.md**. The starter file shows every feature and
    ships two agent prompts that fill the board for you: "Add a pegboard entry
