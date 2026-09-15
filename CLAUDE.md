@@ -23,17 +23,20 @@ tested with plain node. `src/extension.ts` is the tree, the webview and the
 commands. `resources/starter.md` is what the welcome action writes into a
 repo that has no pegboard yet; keep it a working example of every feature.
 
-## Docs go to the private notes repo
+## Two doc folders, split by visibility
 
-`docs/` here is a symlink to `~/git/project-notes/pegboard/docs/` and is
-gitignored. **Every plan, design, worklog, conversation write-up or decision
-goes under `docs/`** (so it lands in the private notes repo), in the usual
-places: `docs/plans/`, `docs/designs/`, `docs/worklog/`,
-`docs/conversations/`, `docs/DECISIONS.md`. Use the prefix
-`yymmddhh_<slug>.md`. Read the latest worklog there before starting a session.
-Nothing under `docs/` is ever committed to this public repo; if a doc should
-ship publicly, the owner will say so and it goes elsewhere (for example the
-README).
+- `docs/`: public, committed. Setup, usage, and this repo's own
+  `docs/pegboard.md` if we dogfood the extension. Edited in place; only what a
+  reader of this repo needs today.
+- `docs-private/`: gitignored symlink to `~/git/project-notes/pegboard/docs-private/`.
+  **Every plan, design, worklog, conversation write-up or decision goes here**,
+  in the usual places: `docs-private/plans/`, `docs-private/designs/`,
+  `docs-private/worklog/`, `docs-private/conversations/`,
+  `docs-private/DECISIONS.md`. Use the prefix `yymmddhh_<slug>.md`. Read the
+  latest worklog there before starting a session.
+
+Anything dated or process-shaped defaults to `docs-private/`. It moves to
+`docs/` or the README only when the owner says so.
 
 ## Conventions
 

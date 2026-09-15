@@ -3,6 +3,7 @@ out/
 *.vsix
 .DS_Store
 
-# docs is a symlink into the private notes repo (../project-notes/pegboard/docs).
+# docs-private is a symlink into the private notes repo (../project-notes/pegboard/docs-private).
 # Plans, worklogs, designs and decisions live there; never commit it here.
-docs
+# docs/ (public, committed) is separate.
+docs-private

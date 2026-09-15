@@ -2,6 +2,8 @@
 .github/**
 docs
 docs/**
+docs-private
+docs-private/**
 src/**
 out/test/**
 node_modules/**
